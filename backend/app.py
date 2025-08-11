@@ -6,6 +6,7 @@ from routes.auth_routes import auth_bp
 from routes.page_routes import page_bp
 from routes.note_routes import note_bp, note_delete_bp
 
+
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
@@ -20,6 +21,9 @@ def create_app():
 
     return app
 
+
+# Ye line add karni jaruri hai for Gunicorn
+app = create_app()
+
 if __name__ == "__main__":
-    app = create_app()
     app.run(debug=True)

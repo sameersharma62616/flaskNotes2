@@ -1,0 +1,25 @@
+from flask import Flask
+from flask_cors import CORS
+from config import Config
+from extensions import init_extensions
+from routes.auth_routes import auth_bp
+from routes.page_routes import page_bp
+from routes.note_routes import note_bp, note_delete_bp
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
+    init_extensions(app)
+
+    CORS(app, supports_credentials=True, origins=[app.config["FRONTEND_URL"]])
+
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(page_bp)
+    app.register_blueprint(note_bp)
+    app.register_blueprint(note_delete_bp)
+
+    return app
+
+if __name__ == "__main__":
+    app = create_app()
+    app.run(debug=True)

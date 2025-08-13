@@ -228,6 +228,15 @@ const Navbar = () => {
                 Dashboard
               </MobileNavLink>
 
+              <Link
+                to="/photo-manager"
+                className="flex items-center space-x-1 hover:text-blue-500 transition-colors"
+                title="Photo Manager"
+              >
+                <FiGrid size={18} />
+                <span>Photo manager</span>
+              </Link>
+
               <MobileNavLink
                 to="/profile"
                 icon={<FiSettings />}

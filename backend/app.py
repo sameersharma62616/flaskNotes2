@@ -30,8 +30,6 @@
 
 
 
-
-
 from flask import Flask
 from flask_cors import CORS
 from config import Config
@@ -39,7 +37,8 @@ from extensions import init_extensions
 from routes.auth_routes import auth_bp
 from routes.page_routes import page_bp
 from routes.note_routes import note_bp, note_delete_bp
-
+from routes.photo_routes import photo_bp
+from flask import send_from_directory
 
 def create_app():
     app = Flask(__name__)
@@ -56,6 +55,8 @@ def create_app():
     app.register_blueprint(page_bp)
     app.register_blueprint(note_bp)
     app.register_blueprint(note_delete_bp)
+    app.register_blueprint(photo_bp)
+    
 
     return app
 
